@@ -1,6 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
+<x-slot name="header">>
 <div class="container mt-4">
     <div class="card shadow-sm">
      <div class="card-header d-flex justify-content-between align-items-center bg-light">
@@ -16,6 +16,7 @@
             <div class="mb-3">
                 <input type="text" class="form-control w-25" placeholder="🔍 Tìm kiếm sinh viên...">
             </div>
+
 
             <!-- Bảng dữ liệu -->
             <div class="table-responsive">
@@ -78,4 +79,5 @@
         </div>
     </div>
 </div>
-@endsection
+    </x-slot>
+</x-app-layout>

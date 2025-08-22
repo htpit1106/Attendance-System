@@ -1,6 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
+<x-slot name="header">>
 <div class="container mt-4">
 
     <!-- Thanh giám sát + tìm kiếm + bộ lọc -->
@@ -101,4 +101,5 @@
         </div>
     </div>
 </div>
-@endsection
+    </x-slot>
+</x-app-layout>

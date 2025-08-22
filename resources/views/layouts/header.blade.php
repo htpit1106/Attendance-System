@@ -29,24 +29,39 @@
 </form>
 
     <!-- User / Auth -->
-    <div class="d-flex align-items-center">
+  <!-- User / Auth -->
+<!-- User / Auth -->
+      <div class="d-flex align-items-center">
+        @guest
+          <!-- Nếu chưa đăng nhập -->
+          <a href="{{ route('register') }}" class="btn btn-outline-light me-2">Đăng ký</a>
+          <a href="{{ route('login') }}" class="btn btn-light">Đăng nhập</a>
+        @endguest
 
-      <a href="/login" class="btn btn-light">Đăng nhập</a>
+        @auth
+          <!-- Nếu đã đăng nhập -->
+          <div class="dropdown">
+            <button class="btn btn-light d-flex align-items-center dropdown-toggle" 
+                    type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{{ Auth::user()->avatar ?? Auth::user()->profile_photo_url ?? '/images/avatar.png' }}" 
+                   alt="User" class="rounded-circle border me-2" width="32" height="32">
+              <span>{{ Auth::user()->name }}</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+              <li><a class="dropdown-item" href="{{ route('profile.show') }}">Thông tin cá nhân</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <form method="POST" action="{{ route('logout') }}">
+                  @csrf
+                  <button type="submit" class="dropdown-item">Đăng xuất</button>
+                </form>
+              </li>
+            </ul>
+          </div>
+        @endauth
+      </div>
 
-      {{-- @guest
-        <!-- Nếu chưa đăng nhập -->
-        <a href="{{ route('register') }}" class="btn btn-outline-light me-2">Đăng ký</a>
-        <a href="{{ route('login') }}" class="btn btn-light">Đăng nhập</a>
-      @endguest
 
-      @auth
-        <!-- Nếu đã đăng nhập -->
-        <div class="d-flex align-items-center text-white">
-          <img src="{{ Auth::user()->avatar ?? '/images/avatar.png' }}" 
-               alt="User" class="rounded-circle border me-2" width="40" height="40">
-          <span>Xin chào, <strong>{{ Auth::user()->name }}</strong></span>
-        </div>
-      @endauth
-    </div> --}}
+
   </div>
 </nav>

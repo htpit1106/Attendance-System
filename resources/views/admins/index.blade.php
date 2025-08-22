@@ -1,13 +1,16 @@
-@extends('layouts.app')
+{{-- resources/views/admins/index.blade.php --}}
+<x-app-layout>
+    <x-slot name="header">
+         <div class="card-header bg-light">
+                    <h3 class="mb-0">Bảng điều khiển quản trị viên</h3>
+        </div>
+    </x-slot>
 
-@section('content')
-<div class="container  mb-5" style="padding-bottom:150px;">
+  <div class="container  mb-5" style="padding-bottom:150px;">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card shadow-sm">
-                <div class="card-header bg-light">
-                    <h3 class="mb-0">Bảng điều khiển quản trị viên</h3>
-                </div>
+              
                 <div class="card-body" style="background-color:#b3d9ff; padding:0;">
                     <div class="row row-cols-5 g-0 text-center">
 
@@ -98,4 +101,4 @@
 
  
 </div>
-@endsection
+</x-app-layout>

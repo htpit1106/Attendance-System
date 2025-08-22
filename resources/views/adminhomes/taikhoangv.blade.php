@@ -1,6 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
+<x-slot name="header">>
 <div class="container mt-4">
     <div class="card shadow-sm">
      <div class="card-header d-flex justify-content-between align-items-center bg-light">
@@ -78,4 +78,5 @@
         </div>
     </div>
 </div>
-@endsection
+    </x-slot>
+</x-app-layout>
