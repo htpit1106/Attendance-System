@@ -8,6 +8,11 @@ class LoginRespons implements LoginResponseContract
 {
     public function toResponse($request)
     {
-        return redirect()->intended('/admin');
+        // Kiểm tra vai trò của người dùng
+        if($request->user()->role === 'admin') {
+            // Nếu là admin, chuyển hướng đến trang quản trị
+            return redirect()->intended('/admin');
+        }
+        return redirect()->intended('/login');
     }
 }

@@ -1,10 +1,11 @@
 {{-- resources/views/admins/index.blade.php --}}
 <x-app-layout>
     <x-slot name="header">
-         <div class="card-header bg-light">
-                    <h3 class="mb-0">Bảng điều khiển quản trị viên</h3>
+
+
+         <div class="card-header bg-light d-flex justify-content-between align-items-center">  
+            <h2 class="mb-2">Bảng điều khiển quản trị viên</h3>
         </div>
-    </x-slot>
 
   <div class="container  mb-5" style="padding-bottom:150px;">
     <div class="row justify-content-center">
@@ -101,4 +102,6 @@
 
  
 </div>
+
+    </x-slot>
 </x-app-layout>

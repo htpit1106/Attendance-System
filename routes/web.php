@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\adminsHome;
 use App\Http\Controllers\GiangvienController;
 use App\Http\Controllers\giangvienHomes;
+use App\Http\Controllers\LophocController;
 use App\Http\Controllers\LophocphanController;
 use App\Http\Controllers\MonhocController;
 use App\Http\Controllers\StudentController;
@@ -12,7 +13,6 @@ use App\Http\Controllers\StudentController;
 Route::get('/admin', function () {
     return view('admins.index');
 })->name('admin.index');
-
 
 
 
@@ -37,6 +37,13 @@ Route::resource('/giangviens', GiangvienController::class);
 
 Route::resource('/monhocs', MonhocController::class);
 Route::resource('/lophocphans', LophocphanController::class);
+Route::resource('/lophocs', LophocController::class);
+
+
+
+
+
+
 
 Route::get('/giangvienhomes-dashboard',[
     giangvienHomes::class, 'viewDashboard'

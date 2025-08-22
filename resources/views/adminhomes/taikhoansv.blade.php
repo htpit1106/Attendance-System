@@ -13,8 +13,15 @@
 
         <div class="card-body">
             <!-- Ô tìm kiếm -->
-            <div class="mb-3">
+            <div class="container">
+        <a href="{{route('lophocs.create')}}" class="btn btn-info btn-sm text-white">
+        ➕ Tạo lớp học   </a>
+            </div>
+       
+            <div class="mb-3 mt-3">
                 <input type="text" class="form-control w-25" placeholder="🔍 Tìm kiếm sinh viên...">
+            </div>
+          
             </div>
 
 

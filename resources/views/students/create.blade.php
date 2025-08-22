@@ -1,6 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
+<x-slot name="header">>
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -19,9 +19,9 @@
                                 <label class="form-label">Lớp học</label>
                                 <select name="class_id" class="form-select" required>
                                     <option value="">Chọn mã lớp</option>
-                                    {{-- @foreach($classes as $class)
-                                        <option value="{{ $class->id }}">{{ $class->code }}</option>
-                                    @endforeach --}}
+                                    @foreach($classes as $class)
+                                        <option value="{{ $class->id }}">{{ $class->ten_lop }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -36,6 +36,12 @@
                             <input type="text" name="username" class="form-control" placeholder="tài khoản" required>
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">Mật khẩu</label>
+                            <input type="password" name="password" class="form-control" placeholder="mật khẩu" required>
+                        </div>
+
+
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-success me-2">Tạo tài khoản</button>
                             <a href="{{ route('adminhomes.taikhoansv') }}" class="btn btn-outline-secondary">Huỷ</a>
@@ -46,4 +52,5 @@
         </div>
     </div>
 </div>
-@endsection
+    </x-slot>
+</x-app-layout>

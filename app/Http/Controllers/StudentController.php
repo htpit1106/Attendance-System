@@ -20,7 +20,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.create');
+        $classes = \App\Models\Lophoc::all(); // Get all classes for the dropdown
+        return view('students.create', compact('classes')); // Return view to create student
     }
 
     /**

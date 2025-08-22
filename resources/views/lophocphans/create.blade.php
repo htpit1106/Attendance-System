@@ -1,5 +1,6 @@
-@extends('layouts.app')
-@section('content')
+<x-app-layout>
+
+<x-slot name="header">>
 <div class="container mt-4">
     <div class="card shadow rounded-3">
         <div class="card-body" style="background-color: #d4f8f8;">
@@ -72,4 +73,5 @@
         </div>
     </div>
 </div>
-@endsection
+    </x-slot>
+</x-app-layout>

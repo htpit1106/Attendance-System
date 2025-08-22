@@ -1,6 +1,6 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
+<x-slot name="header">>
 <div class="container-fluid vh-100">
   <div class="row h-100 g-0">  <!-- g-0 bỏ margin giữa các col -->
     
@@ -33,4 +33,5 @@
 
   </div>
 </div>
-@endsection
+    </x-slot>
+</x-app-layout>
