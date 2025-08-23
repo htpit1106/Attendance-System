@@ -9,7 +9,6 @@ class Lophoc extends Model
    protected $fillable = [
         'ten_lop',
         'mota',
-        'giaovien_id',
     ];
 
     

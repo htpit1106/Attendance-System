@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -29,7 +30,29 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'masv' => 'required|string|max:255|unique:users', // Validate student ID
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'class_id' => 'required|exists:lophocs,id', // Validate class_id
+        ]);
+
+        User::create([
+         
+            'masv' => $request->masv,
+            'name' => $request->name,
+            'email' => $request->email,
+            'status' => 1, // Active status
+            'password' => bcrypt($request->password), // Hash the password
+            'role' => 'student', // Set role to student
+            'class_id' => $request->class_id, // Assign class ID
+            'email_verified_at' => now(), // Set email verification timestamp
+   
+        ]);
+        return redirect()->route('adminhomes.taikhoansv')->with('success', 'Tài khoản sinh viên đã được tạo thành công.');
+
     }
 
     /**

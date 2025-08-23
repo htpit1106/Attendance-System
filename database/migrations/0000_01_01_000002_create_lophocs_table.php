@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('ten_lop')->unique();
             $table->string('mota')->nullable();
-            $table->foreignId('giaovien_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

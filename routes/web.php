@@ -39,7 +39,8 @@ Route::resource('/monhocs', MonhocController::class);
 Route::resource('/lophocphans', LophocphanController::class);
 Route::resource('/lophocs', LophocController::class);
 
-
+Route::get('/giangviens-by-monhoc/{id}', [GiangVienController::class, 'getByIdMonhoc'])
+     ->name('giangvien.byMonhoc');
 
 
 

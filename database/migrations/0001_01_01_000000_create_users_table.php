@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('masv')->unique()->nullable(); // Mã sinh viên
+            // id lop hoc
+            $table->foreignId('class_id')->nullable()->constrained('lophocs')->onDelete('cascade');
+            $table->string('khoa')->nullable();
+            $table->string('monhoc_id')->nullable();
             $table->string('name');
             $table->string('email')->unique();
-    
+            $table->boolean('status')->default(true); // Trạng thái kích hoạt tài khoản
             // role : admin, teacher
             $table->enum('role', ['admin', 'teacher', 'student'])->default('teacher');
 

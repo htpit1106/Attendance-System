@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Monhoc extends Model
 {
+    protected $fillable = ['tenmon', 'mota'];
     
     
 }

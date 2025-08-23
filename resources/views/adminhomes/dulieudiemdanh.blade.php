@@ -1,6 +1,13 @@
 <x-app-layout>
 
-<x-slot name="header">>
+<x-slot name="header">
+    <nav class="navbar bg-light shadow-sm">
+  <div class="container-fluid">
+    <a href="admin" class="btn btn-outline-primary">
+      ← Quay lại
+    </a>
+  </div>
+</nav>
 <div class="container mt-4">
     <div class="card shadow-sm">
         <div class="card-header d-flex justify-content-between align-items-center bg-light">

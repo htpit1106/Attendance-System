@@ -27,10 +27,14 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         return User::create([
+            'masv' => $input['masv'] ?? null, // Optional: Mã sinh viên
+            'class_id' => $input['class_id'] ?? null, // Optional: ID
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-            'role' => $input['role'] // Default role is 'teacher'
+            'role' => $input['role'], // Default role is 'teacher'
+            'khoa'=> $input['khoa'] ?? null,
         ]);
+
     }
 }

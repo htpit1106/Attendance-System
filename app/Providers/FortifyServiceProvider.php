@@ -14,7 +14,9 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract; // <-- thêm dòng này
-use App\Http\Responses\LoginRespons; 
+use App\Http\Responses\LoginRespons;
+use App\Http\Responses\RegisterResponse as ResponsesRegisterResponse;
+use Laravel\Fortify\Contracts\RegisterResponse;
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -24,6 +26,9 @@ class FortifyServiceProvider extends ServiceProvider
     {
         // Đăng ký custom LoginResponse thay thế mặc định
         $this->app->singleton(LoginResponseContract::class, LoginRespons::class);
+        // registerResponse::class);
+        $this->app->singleton(RegisterResponse::class, ResponsesRegisterResponse::class);
+        
     }
 
     /**

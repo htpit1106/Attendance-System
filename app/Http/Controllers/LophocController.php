@@ -41,8 +41,7 @@ class LophocController extends Controller
 
         Lophoc::create([
             'ten_lop' => $request->ten_lop,
-            'mota' => $request->mmota,
-            'giaovien_id' => $request->giaovien_id,
+            'mota' => $request->mota,
         ]);
 
 

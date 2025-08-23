@@ -2,7 +2,12 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5bc0de;">
   <div class="container-fluid">
     <!-- Logo + Tên trường -->
-    <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="{{ url('/') }}">
+    {{-- neu tai khoan admin redirect /admin neu là giang vien /tkgiianviens --}}
+    @if (Auth::check() && Auth::user()->role == 'admin')
+    <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="/admin">
+    @else
+    <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="/dashboard">
+      @endif
 
     <svg width="350" height="89" viewBox="0 0 535 89" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect width="535" height="89" fill="url(#pattern0_910_1326)"/>

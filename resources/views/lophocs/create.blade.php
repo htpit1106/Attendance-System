@@ -19,15 +19,7 @@
             <textarea name="mota" class="form-control"></textarea>
         </div>
 
-        <div class="mb-3">
-            <label for="giaovien_id" class="form-label">Giáo viên</label>
-            <select name="giaovien_id" class="form-control" required>
-                <option value="">-- Chọn giáo viên --</option>
-                @foreach($giaoviens as $gv)
-                    <option value="{{ $gv->id }}">{{ $gv->name }}</option>
-                @endforeach
-            </select>
-        </div>
+    
 
         <button type="submit" class="btn btn-primary">Tạo lớp học</button>
     </form>

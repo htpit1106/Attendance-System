@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Giangvien;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GiangvienController extends Controller
@@ -20,7 +21,8 @@ class GiangvienController extends Controller
      */
     public function create()
     {
-        return view('giangviens.create');
+        $monhocs = \App\Models\Monhoc::all();
+        return view('giangviens.create', compact('monhocs'));
     }
 
     /**
@@ -28,7 +30,36 @@ class GiangvienController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'masv' => 'required|string|max:255|unique:users', // Validate student ID
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'khoa' => 'required|string|max:255',
+            'monhoc_id' => 'nullable|exists:monhocs,id',
+        ]);
+
+        User::create([
+         
+            'masv' => $request->masv,
+            'khoa' => $request->khoa,
+            'status' => 1, // Active status
+            'name' => $request->name,
+            'email' => $request->email,
+            'monhoc_id' => $request->monhoc_id,
+            'password' => bcrypt($request->password), // Hash the password
+            'role' => 'teacher', // Set role to student
+            'class_id' => $request->class_id, // Assign class ID
+            'email_verified_at' => now(), // Set email verification timestamp
+   
+        ]);
+        return redirect()->route('adminhomes.taikhoangv')->with('success', 'Tài khoản giảng viên đã được tạo thành công.');
+    }
+
+    public function getByIdMonhoc($id){
+        $giangviens = User::where('role', 'teacher')->where('monhoc_id', $id)->get();
+        return response()->json($giangviens);
     }
 
     /**

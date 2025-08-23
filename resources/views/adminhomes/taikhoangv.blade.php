@@ -1,6 +1,13 @@
 <x-app-layout>
 
-<x-slot name="header">>
+<x-slot name="header">
+    <nav class="navbar bg-light shadow-sm">
+  <div class="container-fluid">
+    <a href="admin" class="btn btn-outline-primary">
+      ← Quay lại
+    </a>
+  </div>
+</nav>
 <div class="container mt-4">
     <div class="card shadow-sm">
      <div class="card-header d-flex justify-content-between align-items-center bg-light">
@@ -33,12 +40,12 @@
                     <tbody>
                         @forelse ($giangviens as $giangvien)    
                                 <tr>
-                                    <td>{{ $giangvien['id'] }}</td>
-                                    <td>{{ $giangvien['name'] }}</td>
-                                    <td>{{ $giangvien['monhoc'] }}</td>
-                                    <td>{{ $giangvien['email'] }}</td>
+                                    <td>{{ $giangvien->masv}}</td>
+                                    <td>{{ $giangvien->name }}</td>
+                                    <td>{{ $giangvien->khoa}}</td>
+                                    <td>{{ $giangvien->email }}</td>
                                     <td>
-                                        @if($giangvien['status'] == 1)
+                                        @if($giangvien->status == 1)
                                             <span class="text-success fw-bold">Đang hoạt động</span>
                                         @else
                                             <span class="text-danger fw-bold">Ngừng hoạt động</span>

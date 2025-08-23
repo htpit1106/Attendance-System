@@ -13,7 +13,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label">Mã sinh viên</label>
-                                <input type="text" name="student_code" class="form-control" placeholder="Mã SV" required>
+                                <input type="text" name="masv" class="form-control" placeholder="Mã SV" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Lớp học</label>
@@ -28,12 +28,12 @@
                         
                         <div class="mb-3">
                             <label class="form-label">Họ và tên</label>
-                            <input type="text" name="fullname" class="form-control" placeholder="Họ tên" required>
+                            <input type="text" name="name" class="form-control" placeholder="Họ tên" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Tên tài khoản</label>
-                            <input type="text" name="username" class="form-control" placeholder="tài khoản" required>
+                            <label class="form-label">Email: </label>
+                            <input type="email" name="email" class="form-control" placeholder="tài khoản" required>
                         </div>
 
                         <div class="mb-3">
@@ -41,11 +41,18 @@
                             <input type="password" name="password" class="form-control" placeholder="mật khẩu" required>
                         </div>
 
+                        <div class="mb-3">
+                             <label class="form-label">Xác nhận mật khẩu</label>
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="Nhập lại mật khẩu" required>
+                         </div>
+
 
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-success me-2">Tạo tài khoản</button>
                             <a href="{{ route('adminhomes.taikhoansv') }}" class="btn btn-outline-secondary">Huỷ</a>
                         </div>
+                        {{-- role student--}}
+                        <input type="hidden" name="role" value="student">
                     </form>
                 </div>
             </div>

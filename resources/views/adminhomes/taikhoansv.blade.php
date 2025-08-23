@@ -1,6 +1,18 @@
 <x-app-layout>
 
-<x-slot name="header">>
+<x-slot name="header">
+    <!-- Thanh điều hướng chỉ có dấu X -->
+<!-- Thanh điều hướng chỉ có mũi tên quay lại -->
+<nav class="navbar bg-light shadow-sm">
+  <div class="container-fluid">
+    <a href="admin" class="btn btn-outline-primary">
+      ← Quay lại
+    </a>
+  </div>
+</nav>
+
+
+
 <div class="container mt-4">
     <div class="card shadow-sm">
      <div class="card-header d-flex justify-content-between align-items-center bg-light">
@@ -41,12 +53,12 @@
                     <tbody>
                         @forelse ($students as $student)    
                                 <tr>
-                                    <td>{{ $student['id'] }}</td>
-                                    <td>{{ $student['name'] }}</td>
-                                    <td>{{ $student['class'] }}</td>
-                                    <td>{{ $student['email'] }}</td>
+                                    <td>{{ $student->masv }}</td>
+                                    <td>{{ $student->name }}</td>
+                                    <td>{{ $student->class->ten_lop}}</td>
+                                    <td>{{ $student->email }}</td>
                                     <td>
-                                        @if($student['status'] == 1)
+                                        @if($student->status== 1)
                                             <span class="text-success fw-bold">Đang hoạt động</span>
                                         @else
                                             <span class="text-danger fw-bold">Ngừng hoạt động</span>
@@ -74,12 +86,6 @@
                                     <td colspan="6" class="text-center">Không có dữ liệu sinh viên</td>
                                 </tr>
                                 @endforelse
-
-                      
-
-                 
-                 
-                        
                     </tbody>
                 </table>
             </div>

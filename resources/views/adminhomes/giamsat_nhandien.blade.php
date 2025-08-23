@@ -1,6 +1,14 @@
 <x-app-layout>
 
-<x-slot name="header">>
+<x-slot name="header">
+    <nav class="navbar bg-light shadow-sm">
+  <div class="container-fluid">
+    <a href="admin" class="btn btn-outline-primary">
+      ← Quay lại
+    </a>
+  </div>
+</nav>
+
 <div class="container mt-4">
 
     <!-- Thanh giám sát + tìm kiếm + bộ lọc -->

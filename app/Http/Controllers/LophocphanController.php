@@ -20,7 +20,11 @@ class LophocphanController extends Controller
      */
     public function create()
     {
-        return view('lophocphans.create');
+        
+        $monhocs = \App\Models\Monhoc::all();
+        // giang vien mon hoc
+        // get user role teacher
+        return view('lophocphans.create', compact('monhocs'));
     }
 
     /**
@@ -28,7 +32,22 @@ class LophocphanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'malophp' => 'required|unique:lophocphans,malophp',
+            'monhoc_id' => 'required|exists:monhocs,id',
+            'giangvien_id' => 'required|exists:users,id',
+            'tenlophp' => 'required|string|max:255',
+            'mota' => 'nullable|string',
+            'sotinchi' => 'required|integer|min:1|max:10',
+            'ngaybatdau' => 'required|date',
+            'ngayketthuc' => 'required|date|after:ngaybatdau',
+        ]);
+
+        Lophocphan::create($request->all());
+
+        return redirect()->route('adminhomes.monhoc_lophp')->with('success', 'Lớp học phần đã được tạo thành công.');
+
     }
 
     /**

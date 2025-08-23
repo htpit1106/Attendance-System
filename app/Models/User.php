@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Http\Controllers\LophocController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -26,9 +28,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'masv', // Mã sinh viên
+        'class_id', // ID lớp học
         'name',
+        'monhoc_id',
         'email',
         'password',
+        'status',
+        'khoa',
         'role', // Thêm trường role
     ];
 
@@ -64,5 +71,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    // Quan hệ với lớp học
+    public function class()
+    {
+        return $this->belongsTo(Lophoc::class, 'class_id');
     }
 }

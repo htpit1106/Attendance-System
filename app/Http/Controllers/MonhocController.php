@@ -30,7 +30,20 @@ class MonhocController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'tenmon' => 'required|string|max:255|unique:monhocs', // Validate subject name
+            'mota' => 'nullable|string|max:1000',
+        ]);
+
+        Monhoc::create([
+         
+            'tenmon' => $request->tenmon,
+            'mota' => $request->mota,
+   
+        ]);
+        return redirect()->route('adminhomes.monhoc_lophp')->with('success', 'Môn học đã được tạo thành công.');
+
     }
 
     /**
